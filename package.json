@@ -5,11 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy:surge:ts": "yarn build && surge ./dist/ proto2ts.surge.sh",
+    "deploy:surge:dart": "yarn build && surge ./dist/ proto2dart.surge.sh",
+    "deploy:surge": "yarn deploy:surge:ts && yarn deploy:surge:dart"
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "clipboard": "^2.0.8",
+    "protobufjs": "^6.10.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
