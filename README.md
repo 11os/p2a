@@ -1,24 +1,24 @@
 # p2a
 
-## Project setup
-```
-yarn install
-```
+- vue3
+- protobufjs
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## proto to any demo
 
-### Compiles and minifies for production
-```
-yarn build
-```
+- [proto2dart.surge.sh](proto2dart.surge.sh)
+- [proto2ts.surge.sh](proto2ts.surge.sh)
 
-### Lints and fixes files
-```
-yarn lint
-```
+## json to any demo
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+if you want convert json to dart/ts
+
+> https://github.com/11os/j2a
+
+## usage
+
+```sh
+$ yarn # Project setup
+$ yarn serve # Compiles and hot-reloads for development
+$ yarn build # Compiles and minifies for production
+$ yarn lint # Lints and fixes files
+```
