@@ -18,7 +18,7 @@ export function dartValueType(type) {
 }
 
 export function tsValueType(type) {
-  if (type.toLowerCase().indexOf("enum") > -1) return "String";
+  if (type.toLowerCase().indexOf("enum") > -1) return "string";
   switch (type) {
     case "string":
     case "int64":
