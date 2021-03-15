@@ -22,13 +22,13 @@ export function tsValueType(type) {
   switch (type) {
     case "string":
     case "int64":
-      return "String";
+      return "string";
     case "bool":
-      return "Boolean";
+      return "boolean";
     case "float":
     case "double":
     case "int32":
-      return "Number";
+      return "number";
     default:
       return type;
   }
