@@ -48,25 +48,25 @@ to ts
 
 ```ts
 export interface Human {
-  name: String;
-  sex: String;
+  name: string;
+  sex: string;
   head: Head;
   body: Body;
-  skinEnum: String;
-  collections: String[];
+  skinEnum: string;
+  collections: string[];
 }
 
 export interface Head {
-  iq: Number;
+  iq: number;
 }
 
 export interface Body {
-  height: Number;
-  weight: Number;
+  height: number;
+  weight: number;
 }
 
 export interface Foot {
-  isShort: Boolean;
+  isShort: boolean;
 }
 ```
 
