@@ -30,40 +30,29 @@
     <div v-if="mShowAst" class="body-center">{{ form.ast }}</div>
     <div v-if="form.error" class="body-right">{{ form.error }}</div>
     <div v-else class="body-right">
-      <div v-if="mLang === 'ts'">
-        <ts-item
-          v-for="(clazz, idx) in form.output"
-          :key="clazz.name + idx"
-          :clazz="clazz"
-        />
-      </div>
-      <div v-if="mLang === 'dart'">
-        <dart-item
-          v-for="(clazz, idx) in form.output"
-          :key="clazz.name + idx"
-          :clazz="clazz"
-        />
-      </div>
+      <div v-html="form.output" />
     </div>
   </div>
 </template>
 
 <script lang="js">
 import { defineComponent, reactive, ref, watchEffect } from "vue";
-import DartItem from "../components/DartItem.vue";
-import TsItem from "../components/TsItem.vue";
 import { getProtoDemo } from "../api/mock";
-import { transform } from "../utils/transformer";
+import { transform, buildDartCode, buildTsCode } from "../utils/transformer";
 import protobuf from "protobufjs";
 import ClipboardJS from "clipboard";
+import hljs from "highlight.js/lib/core";
+import dart from "highlight.js/lib/languages/dart";
+import typescript from "highlight.js/lib/languages/typescript";
+import 'highlight.js/styles/vs2015.css';
 
 export default defineComponent({
   name: "Index",
   components: {
-    DartItem,
-    TsItem,
   },
   setup: () => {
+    hljs.registerLanguage("dart", dart);
+    hljs.registerLanguage("typescript", typescript);
     const mLang = ref("dart");
     const mShowAst = ref(false);
     const mCopySuccess = ref(false);
@@ -98,8 +87,12 @@ export default defineComponent({
         form.ast = JSON.stringify(root);
         console.log("ast = ", root);
         const output = transform(root);
-        form.output = output;
-        console.log("clazzes = ", output);
+          console.log("clazzes = ", output);
+        if (mLang.value === 'dart') {
+          form.output =  hljs.highlight('dart', buildDartCode(output)).value;
+        } else {
+          form.output =  hljs.highlight('typescript', buildTsCode(output)).value;
+        }
         form.error = "";
       } catch (e) {
         form.error = e;
