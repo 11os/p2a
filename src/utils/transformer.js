@@ -101,7 +101,7 @@ class ###CLAZZ_NAME### {
 }
 
 export function buildTsCode(clazzes) {
-  const tsClazzTemplate = `export interface Human { 
+  const tsClazzTemplate = `export interface ###CLAZZ_NAME### { 
 ###CLAZZ_DEFINE###
 }
 `;

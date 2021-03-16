@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "deploy:surge:ts": "yarn build && surge ./dist/ proto2ts.surge.sh",
     "deploy:surge:dart": "yarn build && surge ./dist/ proto2dart.surge.sh",
-    "deploy:surge": "yarn deploy:surge:ts && yarn deploy:surge:dart"
+    "deploy": "yarn build && surge ./dist/ proto2ts.surge.sh && surge ./dist/ proto2dart.surge.sh"
   },
   "dependencies": {
     "clipboard": "^2.0.8",

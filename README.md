@@ -148,7 +148,7 @@ if you want convert json to dart/ts
 
 ```sh
 $ yarn # Project setup
-$ yarn serve # Compiles and hot-reloads for development
+$ yarn dev # Compiles and hot-reloads for development
 $ yarn build # Compiles and minifies for production
 $ yarn lint # Lints and fixes files
 ```
