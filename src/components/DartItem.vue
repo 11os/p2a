@@ -1,5 +1,5 @@
 <template>
-  <div v-if="clazz.type === 'clazz'">
+  <div v-if="clazz?.type === 'clazz'">
     <div><span className="blue">@JsonSerializable</span>()</div>
     <!-- class -->
     <div>

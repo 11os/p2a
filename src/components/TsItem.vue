@@ -1,5 +1,5 @@
 <template>
-  <div v-if="clazz.type === 'clazz'">
+  <div v-if="clazz?.type === 'clazz'">
     <!-- class -->
     <div>
       <span className="blue">export interface </span

@@ -1,4 +1,4 @@
-export function dartValueType(type) {
+export function dartValueType(type: string) {
   if (type.toLowerCase().indexOf("enum") > -1) return "String";
   switch (type) {
     case "string":
@@ -17,7 +17,7 @@ export function dartValueType(type) {
   }
 }
 
-export function tsValueType(type) {
+export function tsValueType(type: string) {
   // if (type.toLowerCase().indexOf("enum") > -1) return "string";
   switch (type) {
     case "string":
