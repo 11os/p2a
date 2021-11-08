@@ -105,7 +105,7 @@ export function buildTsCode(clazzes) {
 ###CLAZZ_DEFINE###
 }
 `;
-const tsEnumTemplate = `type ###CLAZZ_NAME### = ###CLAZZ_DEFINE###
+const tsEnumTemplate = `export type ###CLAZZ_NAME### = ###CLAZZ_DEFINE###
 `;
   return clazzes
     .map((clazz) => {
