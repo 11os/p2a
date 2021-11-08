@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "deploy:surge:ts": "yarn build && surge ./dist/ proto2ts.surge.sh",
+    "deploy:surge:dart": "yarn build && surge ./dist/ proto2dart.surge.sh",
+    "deploy": "yarn build && surge ./dist/ proto2ts.surge.sh && surge ./dist/ proto2dart.surge.sh"
   },
   "dependencies": {
     "clipboard": "^2.0.8",
