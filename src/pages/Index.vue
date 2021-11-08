@@ -39,7 +39,6 @@
 import { defineComponent, reactive, ref, watchEffect } from "vue";
 import { getProtoDemo } from "../api/mock";
 import { transform, buildDartCode, buildTsCode } from "../utils/transformer";
-import protobuf from "protobufjs";
 import ClipboardJS from "clipboard";
 import hljs from "highlight.js/lib/core";
 import dart from "highlight.js/lib/languages/dart";
