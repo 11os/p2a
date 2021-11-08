@@ -27,7 +27,7 @@ export function transform(root) {
         fields: Object.keys(node.values).map((key) => {
           return {
             name: key,
-            type: "string",
+            type: "enum",
             value: node.values[key],
           };
         }),
@@ -105,10 +105,13 @@ export function buildTsCode(clazzes) {
 ###CLAZZ_DEFINE###
 }
 `;
+const tsEnumTemplate = `type ###CLAZZ_NAME### = ###CLAZZ_DEFINE###
+`;
   return clazzes
     .map((clazz) => {
       const clazzName = clazz.name;
-      const clazzDefine = clazz.fields
+      if (clazz.type !== 'enum') {
+        const clazzDefine = clazz.fields
         .map((field) => {
           const type = field.isList
             ? `${tsValueType(field.type)}[]`
@@ -116,9 +119,17 @@ export function buildTsCode(clazzes) {
           return `  ${field.name}: ${type};`;
         })
         .join("\n");
-      return tsClazzTemplate
-        .replace(/###CLAZZ_NAME###/g, clazzName)
-        .replace(/###CLAZZ_DEFINE###/g, clazzDefine);
+        return tsClazzTemplate
+          .replace(/###CLAZZ_NAME###/g, clazzName)
+          .replace(/###CLAZZ_DEFINE###/g, clazzDefine);
+      } else {
+        const clazzDefine = clazz.fields.map((field) => {
+          return `'${field.name}'`;
+        }).join(" | ");
+        return tsEnumTemplate
+          .replace(/###CLAZZ_NAME###/g, clazzName)
+          .replace(/###CLAZZ_DEFINE###/g, clazzDefine);
+      }
     })
     .join("\n");
 }
